@@ -1,5 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
+const generate = require('./utils/generateMarkdown.js');
+
 
 // TODO: Create an array of questions for user input
 /*GIVEN a command-line application that accepts user input
@@ -31,16 +33,18 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) { }
+function writeToFile(fileName, data) {
+
+}
 
 // TODO: Create a function to initialize app
 function init(questions) {
     inquirer
         .prompt(questions)
-        .then((response) =>
-            response.confirm === response.password
-                ? console.log('Success!')
-                : console.log('You forgot your password already?!')
+        .then((response) => {
+            console.log(response);
+            generateMarkdown(response);
+        }
         );
 }
 
