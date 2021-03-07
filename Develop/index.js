@@ -4,6 +4,7 @@ const generateMD = require('./utils/generateMarkdown.js');
 const fs = require('fs');
 
 const questions = [
+    { type: 'input', message: "What do you want to name your README file?", name: 'fileName', },
     { type: 'input', message: "What is the title of your Project?", name: 'projectTitle', },
     { type: 'input', message: 'Enter your project description:', name: 'projectDesc', },
     { type: 'input', message: 'Enter installation instructions:', name: 'instalInstr', },
@@ -27,7 +28,7 @@ function init(questions) {
         .prompt(questions)
         .then(answers => {
             const markdown = generateMD(answers);
-            writeToFile("Test.MD", markdown);
+            writeToFile(`${answers.fileName}.MD`, markdown);
         });
 }
 
